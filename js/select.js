@@ -213,10 +213,8 @@
       this.wrapper = document.createElement('div');
       $(this.wrapper).addClass('select-wrapper ' + this.options.classes);
       this.$el.before($(this.wrapper));
-      // Move actual select element into overflow hidden wrapper
-      let $hideSelect = $('<div class="hide-select"></div>');
-      $(this.wrapper).append($hideSelect);
-      $hideSelect[0].appendChild(this.el);
+      // Hide actual select element
+      $(this.el).addClass('hide-select');
 
       if (this.el.disabled) {
         this.wrapper.classList.add('disabled');

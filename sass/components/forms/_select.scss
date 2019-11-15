@@ -86,22 +86,22 @@ select {
     fill: rgba(0,0,0,.87);
   }
 
-  & + label {
+  & ~ label {
     position: absolute;
     top: -26px;
     font-size: $label-font-size;
   }
+}
 
-  // Hide select with overflow hidden instead of using display none
-  // (this prevents form validation errors with hidden form elements)
-  .hide-select {
-    width: 0;
-    height: 0;
-    overflow: hidden;
-    position: absolute;
-    top: 0;
-    z-index: -1;
-  }
+// Hide select with overflow hidden instead of using display none
+// (this prevents form validation errors with hidden form elements)
+.hide-select {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  z-index: -1;
 }
 
 // Disabled styles
