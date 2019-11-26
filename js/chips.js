@@ -295,7 +295,7 @@
 
       let renderedChip = document.createElement('div');
       let closeIcon = document.createElement('i');
-      renderedChip.classList.add('chip');
+      renderedChip.classList.add('chip', 'dynamic');
       renderedChip.textContent = chip.tag;
       renderedChip.setAttribute('tabindex', 0);
       $(closeIcon).addClass('material-icons close');
@@ -470,7 +470,7 @@
     // Handle removal of static chips.
     $(document.body).on('click', '.chip .close', function() {
       let $chips = $(this).closest('.chips');
-      if ($chips.length && $chips[0].M_Chips) {
+      if (($chips.length && $chips[0].M_Chips) || $(this).closest('.chip').hasClass('dynamic')) {
         return;
       }
       $(this)

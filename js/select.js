@@ -3,7 +3,9 @@
 
   let _defaults = {
     classes: '',
-    dropdownOptions: {}
+    dropdownOptions: {},
+    withChips: false,
+    chipsOptions: {}
   };
 
   /**
@@ -38,6 +40,7 @@
         typeof this.$el.data('filtered') !== 'undefined'
           ? this.$el.data('filtered') || false
           : false;
+      this.withChips = this.$el.hasClass('with-chips') || this.options.withChips;
 
       // Setup
       this.el.tabIndex = -1;
@@ -68,6 +71,9 @@
      * Teardown component
      */
     destroy() {
+      if (this.chips) {
+        this.chips.destroy();
+      }
       this._removeEventHandlers();
       this._removeDropdown();
       this.el.M_FormSelect = undefined;
@@ -355,6 +361,11 @@
 
       // Add initial selections
       this._setSelectedStates();
+
+      if (this.withChips) {
+        let chipsOptions = $.extend({}, this.options.chipsOptions);
+        this.chips = M.WithChips.init(this.el, chipsOptions);
+      }
     }
 
     /**

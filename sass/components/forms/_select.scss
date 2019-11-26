@@ -84,6 +84,7 @@ select {
     margin: auto 0;
     z-index: 0;
     fill: rgba(0,0,0,.87);
+    pointer-events: none;
   }
 
   & ~ label {

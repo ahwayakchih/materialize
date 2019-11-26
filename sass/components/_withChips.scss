@@ -1,0 +1,89 @@
+.select-wrapper .selected-chips {
+  overflow: hidden;
+  /* From _select: input.select-dropdown */
+  position: relative;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  /* border-bottom: $input-border; */
+  outline: none;
+  height: $input-height;
+  line-height: $input-height;
+  width: 100%;
+  font-size: $input-font-size;
+  margin: $input-margin;
+  padding: 0;
+  padding-right: 25px;
+  user-select: none;
+  z-index: 1;
+
+  display: flex;
+  flex-flow: wrap;
+
+  &.overflown {
+    padding-right: calc(3rem + 25px);
+  }
+
+  .chip {
+    position: relative;
+    max-height: $input-height;
+    margin: 0.5rem 5px 0 0;
+    padding-right: 2rem;
+    flex: 0 1 auto;
+    max-width: 100%;
+
+    &:after {
+      content: '...';
+      display: none;
+      position: absolute;
+      right: 0;
+      transform: translateX(1rem);
+    }
+
+    span {
+      display: inline-block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: 100%;
+    }
+
+    .close {
+      position: absolute;
+      top: 0;
+      right: 6px;
+    }
+  }
+  &.overflown .chip:after {
+    display: inline;
+  }
+
+  & ~input.dropdown-trigger {
+    position: absolute;
+    overflow: hidden;
+    top: 100%;
+    max-height: 0px;
+    pointer-events: none;
+  }
+
+  & .counter {
+    display: none;
+    position: absolute;
+    top: 0.7rem;
+    right: 25px;
+    padding: 0 0.4rem;
+    font-size: 13px;
+    line-height: 2em;
+    border-radius: 1.2em;
+    background: #666;
+    color: #fff;
+
+    &:before {
+      content: '+';
+      display: inline;
+    }
+  }
+  &.overflown .counter {
+    display: inline-block;
+  }
+}
