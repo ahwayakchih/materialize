@@ -2,7 +2,6 @@
   'use strict';
 
   let _defaults = {
-
     onChipAdd: null,
     onChipDelete: null
   };
@@ -10,6 +9,7 @@
   /**
    * @typedef {Object} chip
    * @property {String} tag  chip tag string
+   * @property {any}    value option value
    * @property {String} [image]  chip avatar image string
    */
 
@@ -204,7 +204,8 @@
         let option = select.querySelector('option[value="'+v+'"]');
         this.addChip({
           tag: option.textContent,
-          value: v
+          value: v,
+          image: option.getAttribute('data-icon') || null
         });
       });
     }
